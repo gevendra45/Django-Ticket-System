@@ -1,0 +1,31 @@
+{% extends "ticketapp/base.html" %}
+{% load crispy_forms_tags %}
+    <div class="col-md-8">
+        {% if messages %}
+            {% for message in messages %}
+              <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+              </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+{% block content %}
+    <div class="content-section">
+    	<form method="POST">
+    		{% csrf_token %}
+    		<fieldset class="form-group">
+    			<legend class = "border-bottomm mb-4">Join Today</legend>
+    			{{ form|crispy }}
+    		</fieldset>
+    		<div class = "form-group">
+    			<button class = "btn btn-outline-info" type="submit">Sign Up</button>
+
+    		</div>
+    	</form>
+    	<div classs="border-top pt-3">
+    		<small class = "text-muted">
+    			Already have an Account? <a class="ml-2" href="{% url 'login' %}">Sign In</a>
+    		</small>
+    	</div>
+    </div>
+{% endblock content %}

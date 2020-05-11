@@ -1,0 +1,18 @@
+{% extends "ticketapp/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+  <article class="media content-section">
+    <div class="media-body">
+      <div align="center" class="border-top pt-3">
+      <table border="1">
+        <th border="1">Request ID</th><th border="1">Request Type</th><th border="1">Request Desc</th><th border="1">Request Date</th><th border="1">Status</th>
+        <tr>
+        <td border="1">{{ object.id }}</td><td border="1">{{ object.RequestType }}</td><td border="1">{{ object.RequestDescription }}</td><td border="1">{{ object.date_posted }}</td><td border="1">{{ object.status }}</td>
+      </table>
+      </div>
+      <div align="center">
+        <a class="ml-2" href="{% url 'ticket-update' object.id %}">Update Your Ticket</a>
+      </div>
+    </div>
+  </article>
+{% endblock content %} 
